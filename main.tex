@@ -121,7 +121,7 @@ Golumbic, Lipshteyn and Stern defined in 2009 the class of EPG graphs, an inters
 
 \bigskip
 \begin{keywords}
-EPG, Intersection Graphs, Helly, Single Bend, NP-complete.
+EPG, Intersection Graphs, Helly, Single Bend, NP-completeness.
 
 \bigskip
 \noindent{TAG - Theory and Graph algorithms}
@@ -153,7 +153,7 @@ The study of the Helly property is useful in the most diverse areas of science, 
 Note that the representation of Figure~\ref{fig:trianguloepgRepresentacao}(b) satisfies the Helly property, while the representations of Figures~\ref{fig:trianguloepgRepresentacao}(c) and~\ref{fig:trianguloepgRepresentacao}(d) do not satisfy it.
 
 
-This paper studies graphs that have Helly EPG representation. Our contribution will be present a proof of NP-completeness related to the $ B_1$-EPG-Helly graph recognition problem.
+This paper studies graphs that have Helly EPG representation. Our contribution will be present a proof of NP-completeness related to the $ B_1$-EPG-Helly recognition problem.% whose representation has the Helly property.
 
    %@comment retirado para o SBPO
    %Dessa forma, para situar o leitor neste contexto, são definidos na seção seguinte os principais termos utilizados ao longo deste escrito. 
@@ -284,13 +284,13 @@ By symmetry, we assume that all $ p_i $ must has a single bend. Moreover, two pa
 The \textit{octahedral} is a polyhedron that has 8 faces and it can be represented as in Figure~\ref{fig:octaedro}(a).
 
 \begin{lema}\label{lem:octaedronaohelly}
-The octahedral graph $O_3$ has a unique minimal  $B_1$-EPG($O_3$) representation, without considering isomorphisms.
+The octahedral graph $O_3$ has a unique minimal  $ B_1$-EPG representation.%, without considering isomorphisms.
 \end{lema}
 \begin{proof}
-The octahedral graph $ O_3 $ has in its constitution induced cycles of size 4 ($ C_4 $). The representation structures of $ B_1$-EPG($ C_4 $) are known in the literature and they have been previously presented.
-Take an induced $ C_4 $ subgraph  any of the octahedral $ O_3 $. The two outside vertices are false twins whose neighborhood are all vertices taken for the induced $C_4$. Thus, if in a $ B_1$-EPG($C_4 $) representation, the $ C_4 $ graph is represented as frame, no single bend path can be simultaneously intersecting the 4 paths representing the vertices of the induced $ C_4 $, since these paths have bends in distinct places. Therefore, we conclude that the frame structure can not be part of a $ O_3 $ representation.
+The octahedral graph $ O_3 $ has in its constitution induced cycles of size 4 ($ C_4 $). The representation structures of  $ B_1$-EPG representation of $C_4$ are known in the literature and they have been previously presented.
+Take an induced $ C_4 $ subgraph  any of the octahedral $ O_3 $. The two outside vertices are false twins whose neighborhood are all vertices taken for the induced $C_4$. Thus, if in a $ B_1$-EPG representation of $C_4$, the $ C_4 $ graph is represented as frame, no single bend path can be simultaneously intersecting the 4 paths representing the vertices of the induced $ C_4 $, since these paths have bends in distinct places. Therefore, we conclude that the frame structure can not be part of a $ O_3 $ representation.
 
-With the same reasoning, take a $ B_1$-EPG($ C_4 $) representation where the induced $ C_4 $ subgraph is represented as true pie or false pie. When adding the false twin vertices, which are neighbors of all vertices of $ C_4 $ taken from $ O_3 $, both representations converge to the structure represented in Figure~\ref{fig:octaedro}(b). 
+With the same reasoning, take a $ B_1$-EPG representation of $C_4$ where the induced $ C_4 $ subgraph is represented as true pie or false pie. When adding the false twin vertices, which are neighbors of all vertices of $ C_4 $ taken from $ O_3 $, both representations converge to the structure represented in Figure~\ref{fig:octaedro}(b). 
 \end{proof}
 
 \input{./includes/include-img/octaedro.tex}
@@ -343,9 +343,9 @@ A certificate to {\sc $B_k$-EPG-Helly recognition} problem consists of $Q$, a se
 \item $P$ satisfies the Helly property, i.e. every subset of paths pairwise intersecting in $P$ has at least one common edge.
 \end{itemize}
 
-It check if a $B_k$-EPG representation is valid is computable in polynomial time, just check if all paths of the representation have at most $k$ bends. Thus the verification of the validity of a certificate to $B_k$-EPG-Helly needs compute in polynomial time to check if $ P $ satisfies the  \textit{Helly property}. This result can be achieved through a generalization of Berge's Theorem \citep{bergeDuchet1975}:
+It is easy to check in polynomial time if all paths of a representation have at most $k$ bends. Thus, without loss of generality, the verification of the validity of a certificate to $B_k$-EPG-Helly recognition just needs compute in polynomial time if $ P $ satisfies the  \textit{Helly property}. This result can be achieved through a generalization of Berge's Theorem \citep{bergeDuchet1975}:
 
-\begin{theorem} \citep{bergeDuchet1975} A hipergraph $H$ is $p$-Helly  if only if for each set $A$ of vertices with $|A| = p+1$, the intersection of the hiper-edges $E_j$ with $|E_j \cap A|\geq p$ is not empty. 
+\begin{theorem} \citep{bergeDuchet1975} A hipergraph $M$ is $p$-Helly  if only if for each set $A$ of vertices with $|A| = p+1$, the intersection of the hiper-edges $E_j$ with $|E_j \cap A|\geq p$ is not empty. 
 \end{theorem}
 
 %In paper \citep{robertsSpencer1971}, the authors mention a efficient way to verify if a given family of sets satisfies the Helly property. Therefore, to verify this certificate can be computed in polynomial time. 
@@ -375,7 +375,9 @@ $ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{S_i \in \mathcal{F}} S_i$, an
 
 
 \begin{lema}
-Given a graph $G$, a polynomial grid is enough to a $B_k$-EPG(G) representation. %(A graph $G$ has at most $n(k + 1) \times n(k + 1)$ relevant edges)
+For any $B_k$-EPG-Helly graph $G$ there exists  a $B_k$-EPG-Helly representation $Q$ of $G$ such that the size of $Q$ is bounded by $(k+V(G))$.
+
+%Given a graph $G$, a polynomial grid is enough to a $B_k$-EPG(G) representation. %(A graph $G$ has at most $n(k + 1) \times n(k + 1)$ relevant edges)
 \end{lema}
 
 \begin{proof}
@@ -410,7 +412,7 @@ There is $m\geq 3$, then at least three $e_i, e_j, e_k$, pairwise distinct. Thus
 
 
 \begin{coro}
-{\sc $B_k$-EPG-Helly graph recognition problem} is in $NP$.
+{\sc $B_k$-EPG-Helly  recognition} is in $NP$.
 \end{coro}
  
 
@@ -418,40 +420,40 @@ There is $m\geq 3$, then at least three $e_i, e_j, e_k$, pairwise distinct. Thus
 
 \section{$NP$-hardness}\label{sec:sectionDispositivoClausula}
 
-We will use a graph $H$ isomorphic to the graph presented in Figure~\ref{fig:gadgetBase}, as a gadget to perform the demonstration. The gadget will be used in the reasoning developed from that point forward. For each  clause $c$ of a formula $F$ of the target problem, we will create a $H$ graph (\emph{clause gadgets}), denoted by $G_c$. This gadget graph consists of subgraphs whose $B_1$-EPG representation is well known in the literature, such as: cycles of size 3 and 4 (respectively $ C_3, C_4 $).
+We will use a graph $M$ isomorphic to the graph presented in Figure~\ref{fig:gadgetBase}, as a gadget to perform the demonstration. The gadget will be used in the reasoning developed from that point forward. For each  clause $c$ of a formula $F$ of the target problem, we will create a  graph $M$ (\emph{clause gadgets}), denoted by $G_c$. This gadget graph consists of subgraphs whose $B_1$-EPG representation is well known in the literature, such as: cycles of size 3 and 4 (respectively $ C_3, C_4 $).
 
 \input{./includes/include-img/gadgetB1EpgHelly.tex} 
 
 %@comment trecho retirado porque a definição entrou na seção de introdução e/ou preliminares
-%Para abreviar a escrita, por abuso de notação e para efetuar uma padronização no texto será utilizada a notação $B_{k}$-EPG$(G)$ para denotar uma representação $B_{k}$-EPG do grafo $G$, onde $k$ é o número máximo de dobras que cada caminho possui nessa representação EPG de $G$. Analogamente, utilizaremos a notação $H$-$B_{k}$-EPG$(G)$ para denotar uma representação $B_{k}$-EPG do grafo $G$ que satisfaz a propriedade Helly.
+%Para abreviar a escrita, por abuso de notação e para efetuar uma padronização no texto será utilizada a notação $B_{k}$-EPG$(G)$ para denotar uma representação $B_{k}$-EPG do grafo $G$, onde $k$ é o número máximo de dobras que cada caminho possui nessa representação EPG de $G$. Analogamente, utilizaremos a notação $M$-$B_{k}$-EPG$(G)$ para denotar uma representação $B_{k}$-EPG do grafo $G$ que satisfaz a propriedade Helly.
 
 \begin{defi}
 \label{lab:lab1}
-Let $H$ be the graph shown in Figure~\ref{fig:gadgetBase}. We denote by \emph{center} of a $B_1$-EPG representation of $H$ such that $H[\{b, c, f, g \}]$ is represented as false pie or true pie, the unique grid-point of this representation in which is contained in every path representing the vertices in $ \{b, c, f, g \}$.
+Let $M$ be the graph shown in Figure~\ref{fig:gadgetBase}. We denote by \emph{center} of a $B_1$-EPG representation of $M$ such that $M[\{b, c, f, g \}]$ is represented as false pie or true pie, the unique grid-point of this representation in which is contained in every path representing the vertices in $ \{b, c, f, g \}$.
 \end{defi}
 
 \begin{defi}\citep{golumbic2009}
-Let $H$ be the graph shown in Figure~\ref{fig:gadgetBase}. In each $B_1$-EPG representation of $H$, where $H[\{b, c, f, g \}]$ is represented as false pie or true pie, we denote by \emph {central ray} the edge-intersection  between two paths of $ \{b, c, f, g \} $ starting from the center.
+Let $M$ be the graph shown in Figure~\ref{fig:gadgetBase}. In each $B_1$-EPG representation of $M$, where $M[\{b, c, f, g \}]$ is represented as false pie or true pie, we denote by \emph {central ray} the edge-intersection  between two paths of $ \{b, c, f, g \} $ starting from the center.
 \end{defi}
 
-First, note that, every $B_1$-EPG representation of a $C_4$ satisfies the Helly property, and triangles have $B_1$-EPG representations that satisfy the Helly property, e.g. the one shown in Figure~\ref{fig:triangulos}(b). The graph $H$ is composed by a $C_4^H=H[b, c, f, g]$ and for eight cycles of size 3, which are $(a,b,c);$ $(b,c,bc);$ $(c,e,g);$ $(c,g,cg);$ $(f,g,h);$ $(f,g,fg);$ $(b,d,f);$ $(b,f,bf).$
+Note that every $B_1$-EPG representation of a $C_4$ satisfies the Helly property, and triangles have $B_1$-EPG representations that satisfy the Helly property, e.g. the one shown in Figure~\ref{fig:triangulos}(b). The graph $M$ is composed by a $C_4^M=M[b, c, f, g]$ and for eight cycles of size 3, which are $(a,b,c);$ $(b,c,bc);$ $(c,e,g);$ $(c,g,cg);$ $(f,g,h);$ $(f,g,fg);$ $(b,d,f);$ $(b,f,bf).$
 
-Like $C_4^H$ has a finite number of known representations, shown in Figure~\ref{fig:ciclotam4}, then we can start drawing the H-$B_1$-EPG$(H) $ representation from these structures. The Figures~\ref{fig:falsepietruepieframe}(a), ~\ref{fig:falsepietruepieframe}(b) and ~\ref{fig:falsepietruepieframe}(c) present 3 possibilities of representation of graph $H$, except for isomorphisms. The frame structure has characteristics different than the pies, which makes it less intuitive to understand, so we will make a more detailed discussion about the $B_1$-EPG representation of the frame structure in Section~\ref{subsec:moldura}.
+Like $C_4^M$ has a finite number of known representations, shown in Figure~\ref{fig:ciclotam4}, then we can start drawing the $B_{1}$-EPG-Helly representation of $M$ from these structures. The Figures~\ref{fig:falsepietruepieframe}(a), ~\ref{fig:falsepietruepieframe}(b) and ~\ref{fig:falsepietruepieframe}(c) present 3 possibilities of representation of graph $M$, except for isomorphisms. The frame structure has characteristics different than the pies, which makes it less intuitive to understand, so we will make a more detailed discussion about the $B_1$-EPG representation of the frame structure in Section~\ref{subsec:moldura}.
 
-If $C_4^H$ is represented by pie, then the paths $p(b), p(c), p(f), p(g)$ share a central point of the representation. But if $C_4^H$ is represented by a frame, then the bends of the 4 paths corresponding to the four distinct corners of a rectangle, i.e. all path representing a vertex of $C_4^H$ has a distinct bend point, see~\citep{golumbic2009}.
+If $C_4^M$ is represented by pie, then the paths $p(b), p(c), p(f), p(g)$ share a central point of the representation. But if $C_4^M$ is represented by a frame, then the bends of the 4 paths corresponding to the four distinct corners of a rectangle, i.e. all path representing a vertex of $C_4^M$ has a distinct bend point, see~\citep{golumbic2009}.
 
-As every vertex of $H$ has exactly two neighbors in $C_4^H $, then all paths in a $B_1$-EPG$(H)$ representation are intersecting a pair of paths in the $B_1$-EPG$(C_4^H)$ representation. In this way, there will be exactly two paths that intersect each pair of central rays, see Figures~\ref{fig:falsepietruepieframe}(a) e~\ref{fig:falsepietruepieframe}(b). 
+As every vertex of $M$ has exactly two neighbors in $C_4^M $, then all paths in a $B_1$-EPG representation of $M$ are intersecting a pair of paths in the $B_1$-EPG representation of $C_4^M$. In this way, there will be exactly two paths that intersect each pair of central rays, see Figures~\ref{fig:falsepietruepieframe}(a) e~\ref{fig:falsepietruepieframe}(b). 
 
 \subsection{The special case of the frame structure} \label{subsec:moldura}
 
 Because asymmetric representations, the frame structure needs to be studied in more detail. Next we will show some constraints of this structure in which allow us to use it as gadget in the demonstration.
 
 \begin{prop}\label{lem:direcoesdiferentes}
-In a $B_1$-EPG representation of a $C_4$ isomorphic to a frame, every path intersects exactly two other paths of the frame, where one of them is vertical and another is a horizontal intersection.
+In any $B_1$-EPG representation of a $C_4$ as frame every path $p_i$ that represents a vertex of the $C_4$ intersects exactly two other paths of the frame $p_{i-1}$ and $p_{i+1}$, where one of them is vertical and another is a horizontal intersection.
 \end{prop}
 
 \begin{proof}
-Give a frame representation as defined in~\citep{golumbic2009}. All paths have a bend and have one part in the vertical and another part in the horizontal. Suppose there is a path $p_i$ of the frame that connects two other paths $p_{i-1} $ and $ p_{i + 1}$, horizontally. Then we have that $p_i, p_{i-1}$ and $ p_{i + 1}$ make bend over the same straight line. But, by frame definition, these bend points should be the corners of a rectangle, a contradiction.
+Let a $B_1$-EPG representation of a $C_4$ as frame where $P = \{p_1, \dots, p_4\}$ is the collection paths of this representation.  Every paths have a bend and they have one part in the vertical and another part in the horizontal, by  definition in~\citep{golumbic2009}. Suppose there is a path $p_i$ of the frame that connects two other paths $p_{i-1} $ and $ p_{i + 1}$, both horizontally. Then we have that $p_i, p_{i-1}$ and $ p_{i + 1}$ have bend over the same straight line. But, by frame definition, these bend points should be the corners of a rectangle, a contradiction.
 \end{proof}
 
 \begin{prop}\label{lem:mesmaretasuporte}
@@ -459,17 +461,17 @@ Given a $B_1$-EPG-Helly representation of a graph, where the representation of a
 \end{prop}
 
 \begin{proof}
-Given $p_1$ and $p_2$ paths that represent consecutive vertices of the $C_4$, in a representation isomorphic at frame, and $B_1$-EPG-Helly so that $p_1 \cap p_2 \neq \emptyset$.
+Given $p_1$ and $p_2$ paths that represent consecutive vertices of the $C_4$, in a representation isomorphic at frame, and $B_1$-EPG-Helly such that $p_1 \cap p_2 \neq \emptyset$.
 Suppose that exist a third path, $p_x$, adjacent to $p_1$ and $p_2$, but $p_x \cap (p_1 \cap p_2) = \emptyset$. If this situation occurs, then the structure does not can be  Helly, a contradiction.
 \end{proof}
 
 %\cleardoublepage
 
-By Proposition~\ref{lem:direcoesdiferentes} and Proposition~\ref{lem:mesmaretasuporte} we can conclude that for every vertex $v_i \in V(H)$ such that $v_i \neq V(C_4^H)$, when we use frame to a $H$-$B_{1}$-EPG$(C_4^H)$ representation, $p(v_i)$ will have at least one common edge-intersection to a pair of paths equivalent to its neighbor vertices of $H$. Then, in the Figure~\ref{fig:falsepietruepieframe}(a), Figure~\ref{fig:falsepietruepieframe}(b) and Figure~\ref{fig:falsepietruepieframe}(c) are presented some possible $H$-$B_{1}$-EPG$(H)$ representations. On every $ B_1$-EPG-Helly representation presented maybe applies rotation and mirroring operations, because these operations do not alter the edge intersecting representation structure.
+By Proposition~\ref{lem:direcoesdiferentes} and Proposition~\ref{lem:mesmaretasuporte} we can conclude that for every vertex $v_i \in V(M)$ such that $v_i \neq V(C_4^M)$, when we use frame to a $B_{1}$-EPG-Helly representation of the $C_4^M$, $p(v_i)$ will have at least one common edge-intersection to a pair of paths equivalent to its neighbor vertices of $M$. Then, in the Figure~\ref{fig:falsepietruepieframe}(a), Figure~\ref{fig:falsepietruepieframe}(b) and Figure~\ref{fig:falsepietruepieframe}(c) are presented some possible $B_{1}$-EPG-Helly representation of $M$. On every $B_{1}$-EPG-Helly representation presented we can apply rotation and mirroring operations, because these operations do not alter the edge intersecting representation structure.
 
 
 \begin{prop}
-Em qualquer representacao $B_1$-EPG-Helly do grafo $H$ os seguintes pares de caminhos sao colineares na sua parte que está conectada à representação do $C_4^H$ : $p(a)$ e $p(bc)$; $p(e)$ e $p(cg)$; $p(h)$ e $p(fg)$; $p(d)$ e $p(bf)$.
+Em qualquer representacao $B_{1}$-EPG-Helly do grafo $M$ os seguintes pares de caminhos sao colineares na sua parte que está conectada à representação do $C_4^M$ : $p(a)$ e $p(bc)$; $p(e)$ e $p(cg)$; $p(h)$ e $p(fg)$; $p(d)$ e $p(bf)$.
 \end{prop}
 
 \begin{lema}
@@ -499,25 +501,32 @@ Os caminhos $p(a), p(e), p(d)$ e $p(h)$ estao obrigatoriamente 2 na direcao vert
 % @comment
 
 \begin{lema}\label{lem:obstrucao}
-Given a graph $ G'$ consisting of a vertex $ x $, two isomorphic graphs at $ H $, $ H_1 $ and $ H_2 $, and a bipartite graph $ K_{2,4} $ , where: $ x $ is a vertex of the largest stable set of $ K_{2,4} $; $x $ is adjacent to an induced cycle of size 3 of $ H_1 $, $ C_3^{H_1} $; $x $ is also adjacent to another induced cycle of size 3 of $ H_2 $, $ C_3^{H_2}$, see Figure~\ref{fig:extremidadeDobraObstruida}(a). In a single bend representation the ends path and the bend of $p(x) $ are obstructed.%, i.e. another path $ p(q) $ can not be intersecting only the $ p(x) $ by the ends of the path nor by the bend.
+Given a graph $ G'$ consisting of a vertex $ x $, two isomorphic graphs at $ M $, they are $ H_1 $ and $ H_2 $, and a bipartite graph $ K_{2,4}$, where: $ x $ is a vertex of the largest stable set of $ K_{2,4} $; $x $ is adjacent to an induced cycle of size 3 of $ H_1 $, $ C_3^{H_1} $; $x $ is also adjacent to another induced cycle of size 3 of $ H_2 $, $ C_3^{H_2}$, see Figure~\ref{fig:extremidadeDobraObstruida}(a). In a single bend representation the ends path and the bend of $p(x) $ are obstructed.%, i.e. another path $ p(q) $ can not be intersecting only the $ p(x) $ by the ends of the path nor by the bend.
 \end{lema}
 
 \begin{proof}
-In any single bend representation of $ G'$ the following happens. Since $ p(x) $ is part of the largest stable set in $ K_{2,4} $ then the paths belonging to the largest stable set always will do bend into a false pie, more details in \citep{Asinowski2009}, then $ p(x) $ has a condition of \emph {obstructed bend}, see Figure~\ref{fig:extremidadeDobraObstruida}. Since $ p(x) $ is adjacent to $ C_{3}^{H_1}$ and $ C_3^{H_2}$, then $ p(x) $ must be adjacent to both paths representing these triples of vertices. For the Lemma~\ref{lem:mesmaretasuporte} and Figure~\ref{fig:falsepietruepieframe} we can note that adjacent to any pair of paths of $ C_4^H $ there are two non-intersecting paths. Considering that only one of the two triples of vertices that share the same edge pair of $ C_4^H $ is adjacent to $ p(x) $, this implies that $ p(x) $ has a condition of \emph{obstructed extreme}, see Figure~\ref{fig:extremidadeDobraObstruida}.
+In any single bend representation of $ G'$ the following happens. Since $ p(x) $ is part of the largest stable set in $ K_{2,4} $ then the paths belonging to the largest stable set always will do bend into a false pie, more details in \citep{Asinowski2009}, then $ p(x) $ has a condition of \emph {obstructed bend}, see Figure~\ref{fig:extremidadeDobraObstruida}. Since $ p(x) $ is adjacent to $ C_{3}^{H_1}$ and $ C_3^{H_2}$, then $ p(x) $ must be adjacent to both paths representing these triples of vertices. For the Lemma~\ref{lem:mesmaretasuporte} and Figure~\ref{fig:falsepietruepieframe} we can note that adjacent to any pair of paths of $ C_4^M $ there are two non-intersecting paths. Considering that only one of the two triples of vertices that share the same edge pair of $ C_4^M $ is adjacent to $ p(x) $, this implies that $ p(x) $ has a condition of \emph{obstructed extreme}, see Figure~\ref{fig:extremidadeDobraObstruida}.
 \end{proof}
-% COLOCAR UMA FIGURA EXPLICANDO A PROPRIEDADE ACIMA
+
 \input{./includes/include-img/extremidadeDobraObstruida.tex}
+
+-> Considere o grafo da Figura 9 (a), se adicionarmos um novo vertice y adjacente somente ao vertice x, então na B1-EPG representacao desse grafo o caminho p(y) possui um segmento maximal dominado por p(x). Isso significa que o segmento maximal de p(y) que é adjacente a p(x) estah totalmente contido em algum segmento de p(x), e ainda como p(x) possui dobra e extremidades obstruidas entao isso implica que o segmento maximal p(y) que eh adjacente a p(x) tambem estah obstruido.
+
+-> Duvida 1: inserir aqui tambem a parte que diz que se esse vertice y for adjacente a um outro vertice z entao obrigatoriamente y terah que possuir uma dobra?
+
+-> Duvida 2: Se a duvida anterior for incluida, entao posso incluir a situacao em que esse vertice y possui tambem suas mais dois elementos de obstrucao adjacentes a ele o que implica que alem do segmento maximal adjacente a p(x) tambem o segmento perpendicular (de dobra) tambem esta obstruido.  
+
 
 \subsection{The problem reduction}\label{sec:reducao}
 
-The reduction of a formula $F$ from  {\sc Positive (1 in 3)-3SAT}  to a particular graph $G_F$ that will have  H-$B_{1}$-EPG$(G_F)$ representation, if only if $F$ is satisfactory, it is given below.
+The reduction of a formula $F$ from  {\sc Positive (1 in 3)-3SAT}  to a particular graph $G_F$ that will have  $B_{1}$-EPG-Helly representation of $G_F$, if only if $F$ is satisfactory, it is given below.
 
 \begin{enumerate}
-\item For each clause $C_i \in F$ there is a  \textit{clause gadget} $G_{c}$, isomorph to $H$ graph, that can be draw in single bend and Helly, as in same representation of the Figures~\ref{fig:falsepietruepieframe}(a), ~\ref{fig:falsepietruepieframe}(b) or~\ref{fig:falsepietruepieframe}(c)  ;
+\item For each clause $C_i \in F$ there is a  \textit{clause gadget} $G_{c}$, isomorph to $M$ graph, that can be draw in single bend and Helly, as in same representation of the Figures~\ref{fig:falsepietruepieframe}(a), ~\ref{fig:falsepietruepieframe}(b) or~\ref{fig:falsepietruepieframe}(c)  ;
 
-\item For each variable $x_{j}$ there is a vertex $v_{j}$ that is adjacent to $a$, $e,$ or $h$, vertices of $G_c$, when $x_{j}$ is the first, second or third variable in $C_i$, in this order;
+\item For each variable $x_{j}$ there is a vertex $v_{j}$ that is adjacent to $a$, $e,$ or $M$, vertices of $G_c$, when $x_{j}$ is the first, second or third variable in $C_i$, in this order;
 
-\item For each vertex $v_{j}$, are added 2 isomorphic graphs  at $H$, $H_1$ and $H_2$, where $v_{j}$ is  adjacent to a triangle ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each $H_1$ and $H_2$; 
+\item For each vertex $v_{j}$, are added 2 isomorphic graphs  at $M$, $H_1$ and $H_2$, where $v_{j}$ is  adjacent to a triangle ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each $H_1$ and $H_2$; 
 
 \item The induced subgraph by \emph{pivot vertex}  $v_{j}$, and also $V(H_1)$ and $V(H_2)$ will be called \emph{variable gadget}; 
 
@@ -525,30 +534,27 @@ The reduction of a formula $F$ from  {\sc Positive (1 in 3)-3SAT}  to a particul
 
 \item There is a bipartite graph $K_{2,4}$ with a particular vertex $T$ that is in the largest stable set. This vertex is nominated \emph{true vertex}. $T$ is adjacent to all $v_{j}$ and also to $V$;
 
-\item There are two isomorphic graphs at $H$, $G_{B1}$ and $G_{B2}$. The vertex $T$ is connected to a triangle between ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each;
+\item There are two isomorphic graphs at $M$, $G_{B1}$ and $G_{B2}$. The vertex $T$ is connected to a triangle between ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each;
 
 
-\item There are two isomorphic graphs at $H$, $G_{B3}$ and $G_{B4}$. The vertex $V$ is connected to a triangle between ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each;
+\item There are two isomorphic graphs at $M$, $G_{B3}$ and $G_{B4}$. The vertex $V$ is connected to a triangle between ((a,b,c); (c,e,g); (g,f,h); or (b,d,f)) of each;
 
 \item The induced subgraph by vertices $V(K_{2,4})$, $T$ and $V$,  $V(G_{B_1})$ and $V(G_{B_2})$, and also $V(G_{B_3})$ and $V(G_{B_4})$ will be nominated as \emph{base gadget}. 
 \end{enumerate}
 
 
-Given the previously defined construction for the formula $ F = (x_1 + x_2 + x_3) \wedge (x_2 + x_3 + x_4) \wedge (x_1 + x_3 + x_4) $, on {\sc Positive (1 in 3)-3SAT }, the graph $ G_F $ will be like in the Figure~\ref{fig:exemploGrafoGF}.
+The Figure~\ref{fig:exemploGrafoGF} represents the graph that would be obtained when the previous construction is applied to the formula $ F = (x_1 + x_2 + x_3) \wedge (x_2 + x_3 + x_4) \wedge (x_1 + x_3 + x_4) $, on {\sc Positive (1 in 3)-3SAT}. %, the graph $ G_F $ will be like in the Figure~\ref{fig:exemploGrafoGF}.
+ Consider that we can assign the following values to variables that will satisfy the formula $F$: $x_1 = False; x_2 = False; x_3 = True; x_4 = False$. Thus, considering this assignment we can have a $B_1$-EPG representation similar to the Figure~\ref{fig:grafoFormula}.
 
 
 \input{./includes/include-img/exemploGrafoGF.tex}
 
-%@comment retirado para SBPO
-Let the graph of the Figure~\ref{fig:exemploGrafoGF}, we can assign the following values to variables that will satisfy the formula $F$: $x_1 = False; x_2 = False; x_3 = True; x_4 = False$. Thus, considering this assign can get a $B_1$-EPG representation similar to the Figure~\ref{fig:grafoFormula}.
-
-%@comment retirado para SBPO
 \input{./includes/include-img/formulaCompleta.tex}
 
-First, we construct a minimal single bend representation for the base gadget, including the vertices $T$ and $V$. Such a representation, will be used as a base to guide as the representation of each clause gadget (i.e. $B_1$-EPG$(G_{c_i})$), is inserted in the structure. %The representations of the vertices that correspond to the variables of the formula (i.e. each $p(v_i)$), are also inserted according to the order that appear in the clause and value that each variable can assume.
+First, we construct a minimal single bend representation for the base gadget, including the vertices $T$ and $V$. Such a representation, will be used as a base to guide as the representation of each clause gadget (i.e. $B_1$-EPG representation of $G_{c_i}$), is inserted in the structure. %The representations of the vertices that correspond to the variables of the formula (i.e. each $p(v_i)$), are also inserted according to the order that appear in the clause and value that each variable can assume.
 
 %@comment retirado para SBPO
-%A seguir, serão apresentadas as regras para efetuar as ligações no modelo $B_1$-EPG-Helly, i.e. uma H-$B_1$-EPG${(G_F)}$. Observe uma construção parcial dessa representação  na Figura~\ref{fig:clausulagadgetgf} que mostra uma representação de fórmula satisfatível.
+%A seguir, serão apresentadas as regras para efetuar as ligações no modelo $B_1$-EPG-Helly, i.e. uma $B_{1}$-EPG-Helly${(G_F)}$. Observe uma construção parcial dessa representação  na Figura~\ref{fig:clausulagadgetgf} que mostra uma representação de fórmula satisfatível.
 
 %@comment retirado para SBPO
 \input{./includes/include-img/gradeb1epghellySBPO.tex}
@@ -558,19 +564,19 @@ The $B_{1}$-EPG-Helly graph recognition is NP-hard.
 \end{theorem}
 
 \begin{proof}
-From an instance $F$ of {\sc Positive (1 in 3)-3SAT} we construct a graph $G_F$ as previously described. Now, we will show that $G_F$ has a   $B_{1}$-EPG-Helly representation if only if $F$ is satisfiable.
+Given an instance $F$ of {\sc Positive (1 in 3)-3SAT} we construct a graph $G_F$ as previously described. We will show that $G_F$ has a   $B_{1}$-EPG-Helly representation if only if $F$ is satisfiable.
 
 $(\Rightarrow)$ Suppose that $G_F$ has a $B_1$-EPG-Helly representation, $R_{G_F}$. Without loss of generality assume that $p(V) \cap p(T)$ is a horizontal segment in  $R_{G_F}$. From $R_{G_F}$ we will construct an assignment that satisfies $F$ as follows: assign for each variable $ x_{j}$ true value if the edge intersecting $p(v_j)$ and $p(T)$ is horizontal, and false otherwise.
 
-Note that every single bend representation of a $K_{2,4}$ graph, the path of each vertex of the greater stable set, in particular $p(T)$ here represented, it has bend in a false pie, see \citep{Asinowski2009}. This condition forces $p(T)$ to bend in a false pie of $B_1$-EPG$(K_{2,4})$. 
+Note that every single bend representation of a $K_{2,4}$ graph, the path of each vertex of the greater stable set, in particular $p(T)$ here represented, it has bend in a false pie, see \citep{Asinowski2009}. This condition forces $p(T)$ to bend in a false pie of $B_1$-EPG representation of $K_{2,4}$. 
 
-The vertex $T$ is adjacent to vertices in a external triangle of $G_{B1}$ and $G_{B2}$. As the $K_{2,4}$ is positioned in the bend of $p(T)$, thus in any H-$B_{1}$-EPG$(G_{B1})$  and  H-$B_{1}$-EPG$(G_{B2})$ representation, they are positioned at the ends of $p(T)$, or together to bend, see Lemma~\ref{lem:obstrucao}.   
+The vertex $T$ is adjacent to vertices in a external triangle of $G_{B1}$ and $G_{B2}$. As the $K_{2,4}$ is positioned in the bend of $p(T)$, thus in any $B_{1}$-EPG-Helly representation of $G_{B1}$  and of $G_{B2}$, they are positioned at the ends of $p(T)$, or together to bend, see Lemma~\ref{lem:obstrucao}.   
 
 If a single bend Helly representation of the \textit{clause gadget} has as base the true or false pie, there are two triple of edges on the same line support. This block the clause gadget from positioning in an intermediate part of  $p(T)$, i.e. it has to be allocated in a end, explanation can be found in the section~\ref{sec:sectionDispositivoClausula}. By Lemma~\ref{lem:mesmaretasuporte}, we know that whether the base of the representation of the clause gadget it is a frame, a third vertex  adjacent to edge-intersection of a $C_4$ must share at least one these intersection segments. Thus, since there are two vertices in the \textit{clause gadget}  that share same neighborhood, at least one segment of each path of both vertices is on the same line support, which block the frame from having a completely contained side in a true vertex path $p(T)$. Thus, also in this case the clause gadget will be positioned at the end of the path of $p(T)$.
 
-As we take the adjacency between $p(V)$ and $p(T)$ horizontally, then any edge intersection in $p(V)$, with the exception of $p(T)$, obviously is vertical. Since $V$ is adjacent to vertices of the more external triangles in $G_{B3}$ and $G_{B4}$, the two vertical ends of the segments of $p(V)$ are obstructed by $G_{B3}$ and $G_{B4}$, respectively. Thus, the vertical segment of the path $p(d_{c_i})$ to each \textit{clause gadget} is completely contained in the vertical segment of $p(V)$.At that moment, the horizontal segments of each $p(d_{c_i})$, they must be positioned  to bending and to adjacency with $p(V)$. Consequently, if the $C_4^H$ of each clause gadget $G_c$ is  represented by a true pie or false so, the another three center ray, two are verticals and one is horizontal. If the $C_4^H$ of the \textit{clause gadget} $G_c$ is represented by a  \textit{frame},as frame has 4 distinct bends, where each path that is in $C_4^H$ is positioned in one of these bends, so always that $p(d_{c_i})$ is horizontal segment, also there will be two segments that are verticals and only one other path that is also horizontal (among $p(a_{c_i}),p(e_{c_i}), p(h_{c_i})$), otherwise the structure do not is a  \textit{frame}, see Lemma~\ref{lem:direcoesdiferentes}. The consequence of this structure, both for pies and frame is that this generates that in all \textit{clause gadget} the edege-intersection among only two $\{p(a_{c_i}), p(e_{c_i}), p(h_{c_i})\}$ and each $p(v_{j})$ are two horizontal and exactly one is vertical. In other words, every clause contains exactly one true variable.
+As we take the adjacency between $p(V)$ and $p(T)$ horizontally, then any edge intersection in $p(V)$, with the exception of $p(T)$, obviously is vertical. Since $V$ is adjacent to vertices of the more external triangles in $G_{B3}$ and $G_{B4}$, the two vertical ends of the segments of $p(V)$ are obstructed by $G_{B3}$ and $G_{B4}$, respectively. Thus, the vertical segment of the path $p(d_{c_i})$ to each \textit{clause gadget} is completely contained in the vertical segment of $p(V)$.At that moment, the horizontal segments of each $p(d_{c_i})$, they must be positioned  to bending and to adjacency with $p(V)$. Consequently, if the $C_4^M$ of each clause gadget $G_c$ is  represented by a true pie or false so, the another three center ray, two are verticals and one is horizontal. If the $C_4^M$ of the \textit{clause gadget} $G_c$ is represented by a  \textit{frame},as frame has 4 distinct bends, where each path that is in $C_4^M$ is positioned in one of these bends, so always that $p(d_{c_i})$ is horizontal segment, also there will be two segments that are verticals and only one other path that is also horizontal (among $p(a_{c_i}),p(e_{c_i}), p(h_{c_i})$), otherwise the structure do not is a  \textit{frame}, see Lemma~\ref{lem:direcoesdiferentes}. The consequence of this structure, both for pies and frame is that this generates that in all \textit{clause gadget} the edege-intersection among only two $\{p(a_{c_i}), p(e_{c_i}), p(h_{c_i})\}$ and each $p(v_{j})$ are two horizontal and exactly one is vertical. In other words, every clause contains exactly one true variable.
 
-In any assignment the paths represented by $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ have make bend to that there is intersection with $p(v_{j})$. Each \textit{variable gadget} has a pivot vertex  $p(v_{j})$ and two isomorphic graphs to $H$ with one more external triangle adjacent to $v_j$, as previously explained, these isomorphic graphs $H$, they must they can only connect at one end or bend of a path. Therefore, as the $p(v_{j})$ already does  adjacency with $p(T)$ then one of its ends is obstructed. It is then left to position the isomorphic to $H$ at the other end and in the bend of that path. In this way, any other vertex that is connected to   $p(v_{j})$ must connect in a do not extreme intermediate space. We conclude that $p(v_{j})$ is bend and end obstructed. 
+In any assignment the paths represented by $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ have make bend to that there is intersection with $p(v_{j})$. Each \textit{variable gadget} has a pivot vertex  $p(v_{j})$ and two isomorphic graphs to $M$ with one more external triangle adjacent to $v_j$, as previously explained, these isomorphic graphs $M$, they must they can only connect at one end or bend of a path. Therefore, as the $p(v_{j})$ already does  adjacency with $p(T)$ then one of its ends is obstructed. It is then left to position the isomorphic to $M$ at the other end and in the bend of that path. In this way, any other vertex that is connected to   $p(v_{j})$ must connect in a do not extreme intermediate space. We conclude that $p(v_{j})$ is bend and end obstructed. 
 
 As the segments $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ are two in vertical position and one  in horizontal position. Assuming $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ can not connect to the paths of the variables by the ends, since these are already occupied. Whereas, furthermore,by Lemma~\ref{lem:mesmaretasuporte} and by definition of pies, $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ do not can be completely contained in some $p(v_j)$ in the same direction as him. So necessarily, $p(a_{c_i}), p(e_{c_i}), p(h_{c_i})$ must connect to two paths of variables with false assignment (that connect vertically to
  $p(T)$) and to a variable path with true assignment. Otherwise there would not be $R_{G_F}$.
@@ -596,7 +602,7 @@ The Figure~\ref{fig:clausulagadgetgf} illustrates a provision for the relationsh
 \input{./includes/include-img/clausulaGadgetGFCompleta.tex}
 
 
-Note also that the single bend representation of the base gadget that we use respects the Helly property for the edges. Likewise, the single bend  representation of the clause gadget also respects the Helly property. Furthermore, the single bend representation of the set of vertices of the variable gadget respects the Helly property. And when we join all these representations of subgraphs in the graph of the formula $ G_F $, it also has a representation $ B_1-$EPG that respects the Helly property, when $ F $ is satisfiable.
+Note also that the single bend representation of the base gadget that we use respects the Helly property for the edges. Likewise, the single bend  representation of the clause gadget also respects the Helly property. Furthermore, the single bend representation of the set of vertices of the variable gadget respects the Helly property. And when we join all these representations of subgraphs in the graph of the formula $ G_F $, it also has a representation $ B_1$-EPG that respects the Helly property, when $ F $ is satisfiable.
 
 %~\ref{fig:representacaoCaminhos}
 
