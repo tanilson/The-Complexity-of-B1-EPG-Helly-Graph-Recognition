@@ -166,7 +166,8 @@ This paper studies graphs that have Helly EPG representation. Our contribution w
 
 The term \emph{grid} is used to denote the Euclidean space of integers orthogonal coordinates. Each pair of integers corresponds to a pair of \emph{coordinates},  when convenient we will call as \emph {vertex of the grid}. The term \emph{edge of the grid}, will be used to denote a pair of coordinates that are at a distance one. Two edges $e_1$ and $e_2$ are \emph{consecutive edges} whether they have a common vertex. %A \emph{finite sequence of consecutive edges} is a finite sequence where every vertices are differents  
 A \emph{path in the grid} is any finite sequence of consecutive edges, without vertex repetition, of the grid.
-An edge is vertical when the first coordinate of the vertices composing it are equal, it is horizontal otherwise. A \emph {bend} in a path is a pair of consecutive edges $ e_1, e_2 $ of that path, such that $ e_1$'s direction is different from $ e_2$'s direction. A \emph {grid segment} is a path with no bends. Two paths are said to be \emph{edge-intersecting}, or for simplicity  intersecting, if they share at least one edge of the grid. Otherwise we say they are \emph{edge-disjoint} (or disjoint).
+An edge is vertical when the first coordinate of the vertices composing it are equal, it is horizontal otherwise. A \emph {bend} in a path is a pair of consecutive edges $ e_1, e_2 $ of that path, such that $ e_1$'s direction is different from $ e_2$'s direction. A \emph {grid segment} is a set of consecutive edges with no bends. %is a path with no bends.
+Two paths are said to be \emph{edge-intersecting}, or for simplicity  intersecting, if they share at least one edge of the grid. Otherwise we say they are \emph{edge-disjoint} (or disjoint).
 
 EPG is an acronym used to denote a class of intersection graphs based on the edge intersection of paths in a grid. This class, defined in 2009~\citep{golumbic2009}, consists of the class of graphs that allows a representation scheme where its vertices are represented by paths of a grid $ Q $, such that two vertices in $ G $ are adjacent if and only if its corresponding paths in $ Q $ intersect. If every path in a representation can be represented with at most $ k $ bends, we say that this graph $ G $ has a \emph{ $ B_k$-EPG} representation.%, and we will indicate this representation by the notation $ B_k$-EPG($ G $).
 When $ k = 1 $ we say that this is a \emph{single bend} representation.
@@ -181,13 +182,13 @@ The Helly property, can be applied to the $ B_k $-EPG representation problem, wh
 
 An \emph{edge (of the grid) is relevant} if at least one of its coordinates is start, bend, or end of a path. A  \emph{maximal segment} is one whose its ends are relevants edges.  
 
-A maximal segment $s$ of a path $p$ in a $B_k$-EPG representation that has no adjacency and only one of its ends is not bend, we say that this path has an \emph{optional bend}.   
+%A maximal segment $s$ of a path $p$ in a $B_k$-EPG representation that has no adjacency and only one of its ends is not bend, we say that this path has an \emph{optional bend}.   
 
 %When every edge of each path end that has not adjacency is iteratively removed of the representation keeping adjacencies among paths, so that if the representation was Helly, it remains Helly.
 
-A $B_k$-EPG representation \emph{was minimized} when all columns $(i,i+1)$ and lines $(j,j+1)$ that have only not relevant edges in the representation are removed. This process gives it back a minimal representation (in grid space, i.e. a representation in polynomial space)  without using unnecessary spaces. 
+A $B_k$-EPG representation \emph{was normalized} when all columns $(i,i+1)$ and lines $(j,j+1)$ that have only not relevant edges in the representation are removed. This process gives it back a minimal representation (in grid space, i.e. a representation in polynomial space)  without using unnecessary spaces. 
 
-When the $B_k$-EPG representation was minimized and it does not have optional bends we say that this $B_k$-EPG representation is minimal.
+When the $B_k$-EPG representation was normalized and it does not have optional bends we say that this $B_k$-EPG representation is minimal.
 
 
 In a $B_k$-EPG representation when the ends of a path $p$ are obstructed, i.e. another path $q$ can not be intersecting only the $p$ by the ends of $p$, then we have a situation of \emph{obstructed end}. If this situation occurs in a bend, then we say that there is a \emph{obstructed bend}.
@@ -304,44 +305,15 @@ The $B_1$-EPG-Helly class is properly contained in the $B_1$-EPG class.
 
 \section{$NP$-membership of $B_1$-EPG-Helly Recognition}
 
-In this paper we will demonstrate that  $B_1$-EPG-Helly graph recognition is $NP$-complete. For this demonstration we set up a reduction from {\sc Positive (1 in 3)-3SAT} defined  as follows:
-
-\input{./includes/include-tab/1em33sat.tex}
-
-%Um certificado para o problema {\sc Reconhecimento de grafos $B_1$-EPG-Helly} consiste em uma grade $Q$, um conjunto $P$ de caminhos em $Q$, e uma função bijetora $f$ que associa a cada vértice de $G$ um caminho de $P$ de forma que:
-%\begin{itemize}
-%\item para todo $e=u,v \in E(G)$ segue que $f(u)$ e $f(v)$ são intersectantes em $Q$;
-%\item para todo $f(u),f(v) \in P$ tal que $f(u),f(v)$ são intersectantes em $Q$ segue que $u,v \in E(G)$;
-%\item $P$ satisfaz a propriedade de Helly, i.e. todo subconjunto de caminhos mutualmente inresectantes de $P$ possui pelo menos uma aresta em comum.
-%\end{itemize}
-
-%Logo a verificação da validade de um certificado é facilmente computável em tempo polinomial, pois basta checar se $P$ satisfaz a propriedade de \textit{Helly} e forma uma $B_{1}-$EPG representação. 
-%Sendo assim, no restante deste trabalho concentraremos os nossos esforços na demonstração de que o problema é NP-difícil.
-
-% com variáveis positivas, sabidamente NP-completo, ver \citep{johnson1979}, problema [L04], página 259.
-
-{\sc Positive (1 in 3)-3SAT } is a known NP-complete problem (see \citep{johnson1979}, problem [L04], page 259). {\sc Positive (1 in 3)-3SAT} remains NP-complete when the incidence graph of the input CNF formula is a planar graph~\citep{mulzer2008minimum}.
-
-Given a formula $F$ of {\sc Positive (1 in 3)-3SAT} we will present a polynomial-time construction of a graph $ G_F$ such that $ G_F $ is $ B_1$-EPG-Helly if and only if $ F $ is satisfiable. This graph will contain an induced subgraph $ G_c$ with 12 vertices (called \emph {clause gadget}) for every clause $ c \in C $, and an induced subgraph (\emph {variable gadget}) containing a particular vertex  $ v_j$ for every variable $ x_j$, plus a \emph{base gadget}  with 55 additional vertices.
-
-
-
-\section{Presentation of the problem}
-
-In this paper we are interested in characterizing the complexity of the $B_1$-EPG-Helly recognition problem, whose formal definition is presented next:
-
-\input{./includes/include-tab/reconhecimentob1epghelly.tex}
-
-
-\subsection{$B_k$-EPG-Helly is in NP}
-
-A certificate to {\sc $B_k$-EPG-Helly recognition} problem consists of $Q$, a set $P$ of paths in $Q$, and a combining function $f$ that associates each vertex in $G$ with a path  in $P$ such that:
+A certificate to {\sc $B_k$-EPG-Helly recognition} problem consists of a grid $Q$, a set $P$ of paths in $Q$, and a combining function $f$ that associates each vertex in a graph $G$ with a path  in $P$ such that:
 
 \begin{itemize}
-\item for each $e=(u,v) \in E(G)$ follow that $f(u)$ and $f(v)$ are intersecting in $Q$;
-\item for each $f(u),f(v) \in P$ such that $f(u),f(v)$ are intersecting in $Q$ follow that $(u,v) \in E(G)$;
+\item for each $e=(u,v) \in E(G)$, it follows that $f(u)$ and $f(v)$ are intersecting in $Q$;
+\item for each $f(u),f(v) \in P$ such that $f(u),f(v)$ are intersecting in $Q$, it follows that $(u,v) \in E(G)$;
 \item $P$ satisfies the Helly property, i.e. every subset of paths pairwise intersecting in $P$ has at least one common edge.
 \end{itemize}
+
+\subsection{$B_k$-EPG-Helly is in NP}
 
 It is easy to check in polynomial time if all paths of a representation have at most $k$ bends. Thus, without loss of generality, the verification of the validity of a certificate to $B_k$-EPG-Helly recognition just needs compute in polynomial time if $ P $ satisfies the  \textit{Helly property}. This result can be achieved through a generalization of Berge's Theorem \citep{bergeDuchet1975}:
 
@@ -375,13 +347,13 @@ $ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{S_i \in \mathcal{F}} S_i$, an
 
 
 \begin{lema}
-For any $B_k$-EPG-Helly graph $G$ there exists  a $B_k$-EPG-Helly representation $Q$ of $G$ such that the size of $Q$ is bounded by $(k+V(G))$.
+For any $B_k$-EPG-Helly graph $G$ there exists  a $B_k$-EPG-Helly representation $Q$ of $G$ such that the size of $Q$ is bounded by $O(k+V(G))$.
 
 %Given a graph $G$, a polynomial grid is enough to a $B_k$-EPG(G) representation. %(A graph $G$ has at most $n(k + 1) \times n(k + 1)$ relevant edges)
 \end{lema}
 
 \begin{proof}
-Consider a minimal $B_k$-EPG representation of a graph $G$, with $n$ vertices, in which the largest coordinate used (on both the $x$ and $y$ axis) is minimized (first in $y$, and then in $x$, for example), and the smallest coordinate is $\geq 1$. Let $C$ be the value of the largest $x$-coordinate.
+Consider a minimal $B_k$-EPG representation of a graph $G$, with $n$ vertices, in which the largest coordinate used (on both the $x$ and $y$ axis) is normalized (first in $y$, and then in $x$, for example), and the smallest coordinate is $\geq 1$. Let $C$ be the value of the largest $x$-coordinate.
 
  Therefore, all columns $1 \leq c \leq C$ is necessary for the representation, and correspond to the beginning, end, or bend of some path.
 
@@ -390,7 +362,7 @@ The total number of starts, ends, and bends is n(k + 1), and at most $C \leq n(k
 The reasoning can also be applied to vertical.
 \end{proof}
 
-From now on we will go consider that we have a minimal certificate, i.e. minimized, we still consider that $k$ is polynomial on the size of the certificate. 
+From now on we will go consider that we have a minimal certificate, we still consider that $k$ is polynomial on the size of the certificate. 
 
 %Para cada tripla T de arestas da grade, seja C'  o subconjunto de caminhos de G, que contém pelo menos duas arestas da tripla T. A representação será Helly, se e somente os caminhos em cada um dos subconjuntos C', assim formados, possuírem  uma aresta em comum, para todas as triplas T.
 \begin{theorem}
@@ -419,6 +391,30 @@ There is $m\geq 3$, then at least three $e_i, e_j, e_k$, pairwise distinct. Thus
 
 
 \section{$NP$-hardness}\label{sec:sectionDispositivoClausula}
+
+In this paper we are interested in characterizing the complexity of the $B_1$-EPG-Helly recognition problem, whose formal definition is presented next:
+
+\input{./includes/include-tab/reconhecimentob1epghelly.tex}
+
+In this paper we will demonstrate that  $B_1$-EPG-Helly graph recognition is $NP$-complete. For this demonstration we set up a reduction from {\sc Positive (1 in 3)-3SAT} defined  as follows:
+
+\input{./includes/include-tab/1em33sat.tex}
+
+%Um certificado para o problema {\sc Reconhecimento de grafos $B_1$-EPG-Helly} consiste em uma grade $Q$, um conjunto $P$ de caminhos em $Q$, e uma função bijetora $f$ que associa a cada vértice de $G$ um caminho de $P$ de forma que:
+%\begin{itemize}
+%\item para todo $e=u,v \in E(G)$ segue que $f(u)$ e $f(v)$ são intersectantes em $Q$;
+%\item para todo $f(u),f(v) \in P$ tal que $f(u),f(v)$ são intersectantes em $Q$ segue que $u,v \in E(G)$;
+%\item $P$ satisfaz a propriedade de Helly, i.e. todo subconjunto de caminhos mutualmente inresectantes de $P$ possui pelo menos uma aresta em comum.
+%\end{itemize}
+
+%Logo a verificação da validade de um certificado é facilmente computável em tempo polinomial, pois basta checar se $P$ satisfaz a propriedade de \textit{Helly} e forma uma $B_{1}-$EPG representação. 
+%Sendo assim, no restante deste trabalho concentraremos os nossos esforços na demonstração de que o problema é NP-difícil.
+
+% com variáveis positivas, sabidamente NP-completo, ver \citep{johnson1979}, problema [L04], página 259.
+
+{\sc Positive (1 in 3)-3SAT } is a known NP-complete problem (see \citep{johnson1979}, problem [L04], page 259). {\sc Positive (1 in 3)-3SAT} remains NP-complete when the incidence graph of the input CNF formula is a planar graph~\citep{mulzer2008minimum}.
+
+Given a formula $F$ of {\sc Positive (1 in 3)-3SAT} we will present a polynomial-time construction of a graph $ G_F$ such that $ G_F $ is $ B_1$-EPG-Helly if and only if $ F $ is satisfiable. This graph will contain an induced subgraph $ G_c$ with 12 vertices (called \emph {clause gadget}) for every clause $ c \in C $, and an induced subgraph (\emph {variable gadget}) containing a particular vertex  $ v_j$ for every variable $ x_j$, plus a \emph{base gadget}  with 55 additional vertices.
 
 We will use a graph $M$ isomorphic to the graph presented in Figure~\ref{fig:gadgetBase}, as a gadget to perform the demonstration. The gadget will be used in the reasoning developed from that point forward. For each  clause $c$ of a formula $F$ of the target problem, we will create a  graph $M$ (\emph{clause gadgets}), denoted by $G_c$. This gadget graph consists of subgraphs whose $B_1$-EPG representation is well known in the literature, such as: cycles of size 3 and 4 (respectively $ C_3, C_4 $).
 
