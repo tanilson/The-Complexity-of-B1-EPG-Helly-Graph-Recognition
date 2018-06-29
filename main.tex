@@ -261,9 +261,13 @@ By the results of \citep{golumbic2009}, in Lemma ~\ref{lem:representacaoC4}, eve
 \end{itemize}
 \end{defi}
 
-\input{./includes/include-img/centroRaioCentral.tex}
+%\input{./includes/include-img/centroRaioCentral.tex}
 
-In a $B_1$-EPG representation of a $C_4$ induced as pies where $b$ is center of the pie then there are edge-intersections $ (a_1, b), (a_2, b), (a_3, b), (a_4, b)$ called \emph{central rays}, see Figure~\ref{fig:centroRaioCentral}.
+\input{./includes/include-img/recorteGrade.tex}
+
+In a $B_1$-EPG representation of a $C_4$ induced as pies where $b$ is center of the pie then there are edge-intersections $ (a_1, b), (a_2, b), (a_3, b), (a_4, b)$ called \emph{central rays}, see Figure~\ref{fig:piesInGrid}.
+
+
 
 \input{./includes/include-img/ciclotam4.tex}
 
@@ -305,6 +309,23 @@ The $B_1$-EPG-Helly class is properly contained in the $B_1$-EPG class.
 
 \section{$NP$-membership of $B_1$-EPG-Helly Recognition}
 
+\begin{lema}
+For any $B_k$-EPG-Helly graph $G$ there exists  a $B_k$-EPG-Helly representation $Q$ of $G$ such that the size of $Q$ is bounded by $O(k+V(G))$.
+
+%Given a graph $G$, a polynomial grid is enough to a $B_k$-EPG(G) representation. %(A graph $G$ has at most $n(k + 1) \times n(k + 1)$ relevant edges)
+\end{lema}
+
+\begin{proof}
+Consider a minimal $B_k$-EPG representation of a graph $G$, with $n$ vertices, in which the largest coordinate used (on both the $x$ and $y$ axis) is normalized (first in $y$, and then in $x$, for example), and the smallest coordinate is $\geq 1$. Let $C$ be the value of the largest $x$-coordinate.
+
+ Therefore, all columns $1 \leq c \leq C$ are necessary for the representation, and correspond to the beginning, end, or bend of some path.
+
+The total number of starts, ends, and bends is n(k + 1), and at most $C \leq n(k + 1)$.
+
+%The reasoning can also be applied to vertical.
+\end{proof}
+
+
 A certificate to {\sc $B_k$-EPG-Helly recognition} problem consists of a grid $Q$, a set $P$ of paths in $Q$, and a combining function $f$ that associates each vertex in a graph $G$ with a path  in $P$ such that:
 
 \begin{itemize}
@@ -315,16 +336,15 @@ A certificate to {\sc $B_k$-EPG-Helly recognition} problem consists of a grid $Q
 
 \subsection{$B_k$-EPG-Helly is in NP}
 
-It is easy to check in polynomial time if all paths of a representation have at most $k$ bends. Thus, without loss of generality, the verification of the validity of a certificate to $B_k$-EPG-Helly recognition just needs compute in polynomial time if $ P $ satisfies the  \textit{Helly property}. This result can be achieved through a generalization of Berge's Theorem \citep{bergeDuchet1975}:
+It is easy to check in polynomial time if all paths of a representation have at most $k$ bends. Thus, without loss of generality, the verification of the validity of a certificate for $B_k$-EPG-Helly recognition just needs to compute in polynomial time if $ P $ satisfies the  \textit{Helly property}. This result can be achieved through a generalization of Gilmore's Theorem \citep{bergeDuchet1975} which characterize $p$-Helly families. We consider $p=2$.
 
-\begin{theorem} \citep{bergeDuchet1975} A hipergraph $M$ is $p$-Helly  if only if for each set $A$ of vertices with $|A| = p+1$, the intersection of the hiper-edges $E_j$ with $|E_j \cap A|\geq p$ is not empty. 
+\begin{theorem} \citep{bergeDuchet1975} A hipergraph $M$ is $2$-Helly  if only if for each set $A$ of vertices with $|A| = 3$, the intersection of the hiper-edges $E_j$ with $|E_j \cap A|\geq 2$ is not empty. 
 \end{theorem}
 
 %In paper \citep{robertsSpencer1971}, the authors mention a efficient way to verify if a given family of sets satisfies the Helly property. Therefore, to verify this certificate can be computed in polynomial time. 
 
 %Let $\mathcal{F} = \{ S_1, S_2, \dots, S_p \} $ a family of sets. Consider all triples of elements 
-%The $\mathbb{F}$ family satisfy the Helly property if only if for each triple 
-$ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{S_i \in \mathcal{F}} S_i$, and $\mathcal{F'}(u,v,w)$, the subfamily of all sets wich contain at least two among the elements $u,v,w$. 
+%The $\mathbb{F}$ family satisfy the Helly property if only if for each triple  $ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{S_i \in \mathcal{F}} S_i$, and $\mathcal{F'}(u,v,w)$, the subfamily of all sets wich contain at least two among the elements $u,v,w$. 
 
 %Demonstração Robert e Spencer verificação polinomial propriedade Helly
 % \begin{theorem} \citep{robertsSpencer1971}
@@ -346,33 +366,19 @@ $ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{S_i \in \mathcal{F}} S_i$, an
 % \end{proof}
 
 
-\begin{lema}
-For any $B_k$-EPG-Helly graph $G$ there exists  a $B_k$-EPG-Helly representation $Q$ of $G$ such that the size of $Q$ is bounded by $O(k+V(G))$.
 
-%Given a graph $G$, a polynomial grid is enough to a $B_k$-EPG(G) representation. %(A graph $G$ has at most $n(k + 1) \times n(k + 1)$ relevant edges)
-\end{lema}
-
-\begin{proof}
-Consider a minimal $B_k$-EPG representation of a graph $G$, with $n$ vertices, in which the largest coordinate used (on both the $x$ and $y$ axis) is normalized (first in $y$, and then in $x$, for example), and the smallest coordinate is $\geq 1$. Let $C$ be the value of the largest $x$-coordinate.
-
- Therefore, all columns $1 \leq c \leq C$ is necessary for the representation, and correspond to the beginning, end, or bend of some path.
-
-The total number of starts, ends, and bends is n(k + 1), and at most $C \leq n(k + 1)$.
-
-The reasoning can also be applied to vertical.
-\end{proof}
-
-From now on we will go consider that we have a minimal certificate, we still consider that $k$ is polynomial on the size of the certificate. 
+%From now on we will go consider that we have a minimal certificate, we still consider that $k$ is polynomial on the size of the certificate. 
 
 %Para cada tripla T de arestas da grade, seja C'  o subconjunto de caminhos de G, que contém pelo menos duas arestas da tripla T. A representação será Helly, se e somente os caminhos em cada um dos subconjuntos C', assim formados, possuírem  uma aresta em comum, para todas as triplas T.
 \begin{theorem}
-For each triple $T=\{u,v,w\}$ of edges of a $B_k$-EPG representation, let $\mathcal{P}=\{P_1, P_2, \dots, P_n\}$ the collection of paths relationship to vertices of the graph $G$ on grid $Q$ and $C'$ the sub-collection that contains every paths $P_i$ that have at least two edges this triple $T$. A $B_k$-EPG representation will be Helly if only if the paths in each subset $C'$ have a common edge for all triple $T$. 
+%For each triple $T=\{u,v,w\}$ of edges of a $B_k$-EPG representation, let $\mathcal{P}=\{P_1, P_2, \dots, P_n\}$ the collection of paths relationship to vertices of the graph $G$ on grid $Q$ and $C'$ the sub-collection that contains every paths $P_i$ that have at least two edges this triple $T$. A $B_k$-EPG representation will be Helly if only if the paths in each subset $C'$ have a common edge for all triple $T$. 
+Consider a $B_k$-EPG representation of a graph $G$, $\mathcal{P}= \{P_1, \dots, P_n\}$ be a collection of paths and $\mathcal{T}$ the set of edges contained in the paths of $\mathcal{P}$, then the representation is Helly if only if, for each triple $T\in \mathcal{T}$, the collection of paths containing at least two edges of $T$ has common edge.
 \end{theorem}
 
 \begin{proof}
-$(\Rightarrow)$ Note that the paths that have edges belonging to $\mathcal{C'}(u, v, w)$ pairwise intersect, then by hypothesis,
-$$\bigcap \{P_i: P_i	\in \mathcal{C'}(u,v,w)\} \neq \emptyset .$$
-$(\Leftarrow)$ Let $\bigcap \{P_i: P_i	\in \mathcal{C'}(u,v,w)\} \neq \emptyset$  for every triple $ \displaystyle  u,v,w \in \mathcal{S} = \bigcup _{P_i \in \mathcal{P}} P_i$.
+$(\Rightarrow)$ Note that if the paths that have edges belonging to $T=(e_1, e_2, e_3)$ are pairwise intersect, then by hypothesis,
+$$\bigcap \{P_i: P_i	\in \mathcal{P'} \} \neq \emptyset , \mbox{where } \mathcal{P'} \mbox{ is the subset of paths having 2 edges among } e_1, e_2,e_3.$$
+$(\Leftarrow)$ If a $B_k$-EPG representation is Helly then $\bigcap \{P_i: P_i	\in \mathcal{P'}\} \neq \emptyset$  for every triple $T$.%$ \displaystyle  e_1, e_2, e_3 \in \mathcal{S} = \bigcup _{P_i \in \mathcal{P}} P_i$.
 Suppose, by contradiction, that $\mathcal{P}$ does not satisfy the Helly property. Then there is sub-collection $C_1$ of $ \mathcal{P}$ whose sets are pairwise intersecting, but there is not a common element. Consider a sub-collection $C_2 = \{P_1, \dots, P_m\}$ a minimal sub-collection of $C_1$ about  it does not satisfy the Helly property, i.e.
 \begin{itemize}
 \item $C_2$ does not satisfy the Helly property;
@@ -381,6 +387,8 @@ Suppose, by contradiction, that $\mathcal{P}$ does not satisfy the Helly propert
 Note that $m\geq 3$. It being $C_2$ minimal about does not satisfy the Helly property, then $\bigcap _{ \mathcal{S} \in C_2-P_i	} \mathcal{S} \neq \emptyset$, for all $S_i \in C_2$. Thus,  for each $i=1, \dots, m$ there is edge $e_i \in (\bigcap _{j\neq i}P_j)-P_i$.
 There is $m\geq 3$, then at least three $e_i, e_j, e_k$, pairwise distinct. Thus, it being $C_2$ the minimum about does not satisfy the Helly property, each element of $C_2$ contains at least two among $e_i, e_j, e_k$.  Therefore $C_2 = \{P_1, \dots, P_m\} \subset \mathcal{P}(e_i, e_j, e_k)$, a contradiction of the our hypothesis.
 \end{proof}
+
+%@comment essa parte de baixo corresponde à demonstração acima que está sendo alterada.... pode ser removido posteriormente...
 
 
 \begin{coro}
